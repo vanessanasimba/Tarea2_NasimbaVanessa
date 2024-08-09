@@ -28,8 +28,7 @@ class Factura{
         try {
             $con = new ClaseConectar();
             $con = $con->conectarBaseDatos();
-            $cadena = "INSERT INTO `factura`(`Fecha`, `Sub_total`, `Sub_total_iva`, `Valor_IVA`, `Clientes_idClientes`) 
-            VALUES ('$Fecha',$Sub_total,$Sub_total_iva,$Valor_IVA,$idClientes)";
+            $cadena = "INSERT INTO `factura` (`Fecha`, `Sub_total`, `Sub_total_iva`, `Valor_IVA`, `Clientes_idClientes`) VALUES ('$Fecha', '$Sub_total', '$Sub_total_iva', '$Valor_IVA', $idClientes)";
             if (mysqli_query($con, $cadena)) {
                 return $con->insert_id;
             } else {
@@ -46,11 +45,11 @@ class Factura{
         try {
             $con = new ClaseConectar();
             $con = $con->conectarBaseDatos();
-            $cadena = "UPDATE `factura` SET ,`Fecha`='$Fecha',`Sub_total`='$Sub_total',`Sub_total_iva`='$Sub_total_iva',`Valor_IVA`='$Valor_IVA',`Clientes_idClientes`='$idClientes'
-            WHERE `idFactura`='$idFactura'";
+            $cadena = "UPDATE `factura` SET `Fecha`='$Fecha',`Sub_total`=$Sub_total,`Sub_total_iva`=$Sub_total_iva,`Valor_IVA`=$Valor_IVA,`Clientes_idClientes`=$idClientes WHERE `idFactura`=$idFactura ";
             if (mysqli_query($con, $cadena)) {
                 return $idFactura;
             } else {
+                echo $cadena;
                 return $con->error;
             }
         } catch (Exception $th) {
