@@ -1,0 +1,5 @@
+nodejs
+angula
+pnpm
+------
+direccionar a la ruta que quiero crrear el proyecoto 
